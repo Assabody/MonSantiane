@@ -1,51 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {DrawerNavigator} from 'react-navigation';
 
-import Component1 from './app/components/component';
-import FirstScreen from './screens/Home';
-import SecondScreen from './screens/MyContracts';
+import DrawerStack from './app/stacks/drawerStack'
+import {StackNavigator} from 'react-navigation'
 
-const Drawer = DrawerNavigator(
+const Navigator = StackNavigator(
     {
-        First: {
-            path: '/',
-            screen: FirstScreen
-        },
-        Second: {
-            path: '/',
-            screen: SecondScreen
-        }
+        drawerStack: {screen: DrawerStack}
     },
     {
-        initialRouteName: 'First',
-        drawerPosition: 'left'
-    }
-);
+        headerMode: 'none',
+        initialRouteName: 'drawerStack'
+    });
 
-export default Drawer
-/*
-export default class App extends React.Component {
-  render() {
-    return (
-        <View>
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-                <Text>Changes you make will automatically reload.</Text>
-            </View>
-            <Component1/>
-        </View>
-
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-*/
+export default Navigator;

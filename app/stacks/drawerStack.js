@@ -1,11 +1,16 @@
-import {StackNavigator} from 'react-navigator';
-import {TouchableHighlight, Text, View} from 'react-native';
+import React from 'react';
+import {StackNavigator} from 'react-navigation';
+import {TouchableOpacity, Text, View, Button} from 'react-native';
+import DrawerScreen from "./drawerScreen";
+import Icons from 'react-native-vector-icons/MaterialIcons';
 
 const DrawerNavigation = StackNavigator({
-    DrawerStack: {screen: DrawerStack}
+    DrawerStack: {screen: DrawerScreen}
     },
     {
-        navigationOptions: ({navigation}) => ({
+        headerMode: 'float',
+        navigationOptions: ({navigation}) => (
+            {
             headerStyle: {
                 backgroundColor: '#ff9933',
                 paddingLeft: 10,
@@ -14,15 +19,24 @@ const DrawerNavigation = StackNavigator({
             title: 'Home',
             headerTintColor: 'white',
             headerLeft: <View>
-                <TouchableHighlight
+                <TouchableOpacity
                     onPress={() => {
-                        navigation.navigate('DrawerOpen');
+                        if (navigation.state.index === 0) {
+                            navigation.navigate('DrawerOpen');
+                        } else {
+                            navigation.navigate('DrawerClose');
+                        }
                     }}>
-                    <Text>Menu</Text>
-                </TouchableHighlight>
+                    <Icons
+                        name="menu"
+                        size={32}
+                        style={{color: 'white'}}
+                    >
+                    </Icons>
+                </TouchableOpacity>
             </View>
         })
     }
 );
 
-export default DrawerNavigation
+export default DrawerNavigation;
