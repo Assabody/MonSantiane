@@ -8,7 +8,7 @@ export default class SecondScreen extends React.Component {
         drawerIcon: ({tintColor}) => {
             return (
                 <Icons
-                    name="change-history"
+                    name="card-membership"
                     size={24}
                     style={{color: tintColor}}
                 >
@@ -22,13 +22,14 @@ export default class SecondScreen extends React.Component {
                 {
                     flex: 1,
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    backgroundColor: 'white'
+
                 }
             }>
-
-                <Text>My Contracts</Text>
-                <Button onPress={() => this.props.navigation.navigate('DrawerOpen')} title='Open Menu'/>
+                <Text>Mes Contrats</Text>
             </View>
         )
     }
 }
+

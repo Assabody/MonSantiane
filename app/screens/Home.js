@@ -22,12 +22,11 @@ export default class FirstScreen extends React.Component {
                 {
                     flex: 1,
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    backgroundColor: 'white'
                 }
             }>
-
                 <Text>Home</Text>
-                <Button onPress={() => this.props.navigation.navigate('DrawerOpen')} title='Open Menu'/>
             </View>
         )
     }
