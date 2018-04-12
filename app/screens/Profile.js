@@ -1,21 +1,30 @@
-import React from 'react';
-import {Text, View, Button, Image} from 'react-native';
-import Icons from 'react-native-vector-icons/MaterialIcons';
+import React from "react";
+import { View } from "react-native";
+import { Card, Button, Text } from "react-native-elements";
+import { onSignOut } from "../auth";
 
-export default class Profile extends React.Component {
-    render() {
-        return (
-            <View style={
-                {
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }
-            }>
-
-                <Text>Mon Profile</Text>
-                <Button onPress={() => this.props.navigation.navigate('DrawerOpen')} title='Open Menu'/>
+export default ({ navigation }) => (
+    <View style={{ paddingVertical: 20 }}>
+        <Card title="John Doe">
+            <View
+                style={{
+                    backgroundColor: "#bcbec1",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 80,
+                    height: 80,
+                    borderRadius: 40,
+                    alignSelf: "center",
+                    marginBottom: 20
+                }}
+            >
+                <Text style={{ color: "white", fontSize: 28 }}>JD</Text>
             </View>
-        )
-    }
-}
+            <Button
+                backgroundColor="#03A9F4"
+                title="SIGN OUT"
+                onPress={() => onSignOut().then(() => navigation.navigate("SignedOut"))}
+            />
+        </Card>
+    </View>
+);
