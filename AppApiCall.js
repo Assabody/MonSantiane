@@ -50,7 +50,7 @@ export default class App extends React.Component {
                         data={this.state.dataSource}
                         renderItem={({item}) => <View>
                             <Text>{item.id} : {item.label} et link : </Text>
-                            <Button onPress={console.log("dadzada")} title="Document" style={{flex:1}}/>
+                            <Button onPress={() => {this._handlePress(item.link)}} title="Document" style={{flex:1}}/>
                         </View>}
                         keyExtractor={(item, index) => index.toString()}
                     />
