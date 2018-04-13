@@ -29,28 +29,24 @@ const images = [
     }
 ];
 
-export class MyContracts extends Component{
-    static navigationOptions = {
-        title: 'Mes Contrats',
-    };
+export class ContractDetail extends Component{
     render() {
-        const { navigate } = this.props.navigation;
         return (
             <View style={{flex: 1}}>
                 <ScrollView contentContainerStyle={{paddingVertical: 20}}>
-                    {images.map(({name, image, url, key}) =>
+                    {images.map(({name, image, url, key}) => (
                         <Card title={`CARD ${key}`} image={image} key={key}>
                             <Text style={{marginBottom: 10}}>
                                 Photo by {name}.
                             </Text>
+
                             <Button
-                                title="Go to Jane's profile"
-                                onPress={() =>
-                                    navigate('ContractDetail', { name: 'Jane' })
-                                }
+                                backgroundColor="#03A9F4"
+                                title="VIEW NOW"
+                                onPress={() => Linking.openURL(url)}
                             />
                         </Card>
-                    )}
+                    ))}
                 </ScrollView>
             </View>
         )
