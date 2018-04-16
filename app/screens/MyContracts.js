@@ -38,7 +38,12 @@ export class MyContracts extends Component{
         const { navigate } = this.props.navigation;
         return (
             <View style={{flex: 1}}>
-                <Api />
+                <Button
+                    title="FAQ"
+                    onPress={() =>
+                        navigate('FAQ')
+                    }
+                />
                 <ScrollView contentContainerStyle={{paddingVertical: 20}}>
                     {images.map(({name, image, url, key}) =>
                         <Card title={`CARD ${key}`} image={image} key={key}>

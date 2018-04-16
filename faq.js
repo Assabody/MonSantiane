@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import
 import Icons from 'react-native-vector-icons/MaterialIcons';
 
 class MainActivity extends Component {
@@ -128,7 +127,7 @@ class ConsultationActivity extends Component
     }
 }
 
-export default Project = StackNavigator(
+export const Project = StackNavigator(
     {
         First: { screen: MainActivity },
 
