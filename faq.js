@@ -3,24 +3,12 @@ import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
 import ProjectNavigator from './app/StackNavigator';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 
-class Faq extends Component
+export class Faq extends Component
 {
     static navigationOptions =
         {
             title: 'faq',
         };
-    FunctionToOpenActivationActivity = () =>
-    {
-        this.props.navigation.navigate('Activation');
-    }
-    FunctionToOpenConnexionActivity = () =>
-    {
-        this.props.navigation.navigate('FaqConnect');
-    }
-    FunctionToOpenConsultationActivity = () =>
-    {
-        this.props.navigation.navigate('Consultation');
-    }
     render()
     {
         return(
@@ -29,11 +17,9 @@ class Faq extends Component
                     <Text style = { styles.TitleStyle }>Questions les plus fréquentes</Text>
                     <Text style = { styles.TextStyle }>Consultez ici les questions les plus fréquentes vis-à-vis de l’utilisation de votre espace adhérent monsantiane.fr et accédez à notre formulaire de contact en cas de besoin.</Text>
                 </View>
-
-                <Button onPress = { this.FunctionToOpenActivationActivity } title = 'Activation de mon espace' />
-                <Button onPress = { this.FunctionToOpenConnexionActivity } title = 'Connexion à mon espace' />
-                <Button onPress = { this.FunctionToOpenConsultationActivity } title = 'Consultation de mes informations' />
-
+                <Button onPress = { this.props.navigation.navigate('Activation') } title = 'Activation de mon espace' />
+                <Button onPress = { this.props.navigation.navigate('FaqConnect') } title = 'Connexion à mon espace' />
+                <Button onPress = { this.props.navigation.navigate('Consultation') } title = 'Consultation de mes informations' />
             </View>
         );
     }

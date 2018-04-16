@@ -3,7 +3,7 @@ import { StackNavigator } from 'react-navigation';
 import { MyContracts } from './MyContracts';
 import { ContractDetail } from './ContractDetail';
 import { FontAwesome } from "react-native-vector-icons";
-import { Project } from './../../faq';
+import { Faq } from './../../faq';
 const stackNav = StackNavigator(
     {
         FirstScreen: {
@@ -16,7 +16,7 @@ const stackNav = StackNavigator(
             })
         },
         FAQ: {
-            screen: Project,
+            screen: Faq,
             navigationOptions:({}) => ({
                 title: "FAQ",
             })

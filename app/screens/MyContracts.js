@@ -44,6 +44,7 @@ export class MyContracts extends Component{
                         navigate('FAQ')
                     }
                 />
+                <Api />
                 <ScrollView contentContainerStyle={{paddingVertical: 20}}>
                     {images.map(({name, image, url, key}) =>
                         <Card title={`CARD ${key}`} image={image} key={key}>
@@ -51,9 +52,9 @@ export class MyContracts extends Component{
                                 Photo by {name}.
                             </Text>
                             <Button
-                                title="Go to Jane's profile"
+                                title={"Go to " + name + "'s profile"}
                                 onPress={() =>
-                                    navigate('ContractDetail', { name: 'Jane' })
+                                    navigate('ContractDetail', {name: name})
                                 }
                             />
                         </Card>
@@ -63,4 +64,3 @@ export class MyContracts extends Component{
         )
     }
 };
-

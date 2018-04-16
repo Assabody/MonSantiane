@@ -9,7 +9,7 @@ import { Constants, WebBrowser } from 'expo';
     }
 
     componentDidMount() {
-        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"etna@santiane.fr","password":"codecampetna", "auto_refresh":1}');
+        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"@","password":"codecampetna", "auto_refresh":1}');
         return fetch('https://api.santiane.fr/etna/mobilecamp/document?filter={"contract_id":2570}')
             .then((response) => response.json())
             .then((responseJson) => {
