@@ -1,41 +1,13 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import ProjectNavigator from './app/StackNavigator';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 
-class MainActivity extends Component {
-  static navigationOptions =
-      {
-        title: 'MainActivity',
-      };
-
-      FunctionToOpenSecondActivity = () =>
-      {
-          this.props.navigation.navigate('Second');
-      }
-      render()
-      {
-          return(
-              <View style = { styles.MainContainer }>
-
-                  <View style={{backgroundColor: 'blue', flex: 0.3}} />
-                  <View style={{backgroundColor: 'red', flex: 0.5}} />
-                  <View style={{marginBottom: 20}}>
-                      <Text style = { styles.TextStyle }>This is MainActivity</Text>
-                  </View>
-
-                  <Button onPress = { this.FunctionToOpenSecondActivity } title = 'Click Here To Open Second Activity' />
-
-              </View>
-          );
-      }
-}
-
-class SecondActivity extends Component
+class Faq extends Component
 {
     static navigationOptions =
         {
-            title: 'SecondActivity',
+            title: 'faq',
         };
     FunctionToOpenActivationActivity = () =>
     {
@@ -43,7 +15,7 @@ class SecondActivity extends Component
     }
     FunctionToOpenConnexionActivity = () =>
     {
-        this.props.navigation.navigate('Connexion');
+        this.props.navigation.navigate('FaqConnect');
     }
     FunctionToOpenConsultationActivity = () =>
     {
@@ -66,80 +38,6 @@ class SecondActivity extends Component
         );
     }
 }
-
-class ActivationActivity extends Component
-{
-    static navigationOptions =
-        {
-            title: 'Activation',
-        }
-    render()
-    {
-        return(
-            <View>
-                <View>
-                    <Text style = { styles.TextStyle }>Comment activer mon espace ?</Text>
-                    <Text style = { styles.TextStyle }>Comment activer mon espace ?</Text>
-                    <Text style = { styles.TextStyle }>Comment activer mon espace ?</Text>
-                    <Text style = { styles.TextStyle }>Comment activer mon espace ?</Text>
-                    <Text style = { styles.TextStyle }>Comment activer mon espace ?</Text>
-                    <Text style = { styles.TextStyle }>Comment activer mon espace ?</Text>
-                </View>
-            </View>
-        );
-    }
-}
-
-class ConnexionActivity extends Component
-{
-    static navigationOptions =
-        {
-            title: 'Connexion',
-        }
-    render()
-    {
-        return(
-            <View>
-                <View>
-                    <Text style = { styles.TextStyle }>Comment me connecter à mon espace ?</Text>
-                </View>
-            </View>
-        );
-    }
-}
-
-class ConsultationActivity extends Component
-{
-    static navigationOptions =
-        {
-            title: 'Consultation',
-        }
-    render()
-    {
-        return(
-            <View>
-                <View>
-                    <Text style = { styles.TitleStyle }>Consultation de mes informations</Text>
-                    <Text style = { styles.TextStyle }>Je ne vois pas mon contrat</Text>
-                </View>
-            </View>
-        );
-    }
-}
-
-export const Project = StackNavigator(
-    {
-        First: { screen: MainActivity },
-
-        Second: { screen: SecondActivity },
-
-        Activation: { screen: ActivationActivity },
-
-        Connexion: { screen: ConnexionActivity },
-
-        Consultation: { screen: ConsultationActivity }
-    }
-);
 
 const styles = StyleSheet.create(
     {
