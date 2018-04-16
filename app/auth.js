@@ -3,19 +3,15 @@ import { AsyncStorage } from "react-native";
 
 export const onSignIn = (email, password) => {
     console.log("Email: " + email + " Password: " + password);
-    //todo récupérer les datas des inputs
     return fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"' + email + '","password":"' + password + '", "auto_refresh":1}')
         .then((response) => response.json())
         .then((responseJson) => {
-           // var retour = JSON.parse(JSON.stringify(eval("(" + responseJson + ")")));
             if (responseJson["status"] === true) {
                 AsyncStorage.setItem('email', email);
                 AsyncStorage.setItem('password', password);
-                alert("Connection success")
-                //todo rediriger vers la liste des contrats
+                return (true)
             } else if (responseJson["status"] === false) {
-                alert("Bad credentials");
-                //todo mettre un message
+                return(false);
             }
         })
         .catch(function(err) {
@@ -31,19 +27,20 @@ export const isSignedIn = () => {
     return new Promise((resolve, reject) => {
         AsyncStorage.getItem('email')
             .then(res => {
-                if (res !== null) {
-                    console.log("Email: " + AsyncStorage.getItem('email'));
+                if (res !== null && res !== "") {
                     AsyncStorage.getItem('password')
                         .then(res => {
                             if (res !== null && res !== "") {
-                                console.log("Password: " + AsyncStorage.getItem('password'));
                                 resolve(true);
                             }
+                            resolve(false);
                         })
                         .catch(err => reject(err));
+                        resolve(true)
                 } else {
                     resolve(false);
                 }
+                resolve(false);
             })
             .catch(err => reject(err));
     });
