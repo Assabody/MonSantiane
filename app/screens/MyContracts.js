@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ScrollView, Text, Linking, View } from "react-native";
 import { Card, Button } from "react-native-elements";
+import { Api } from '../../AppApiCall';
 
 const images = [
     {
@@ -37,6 +38,7 @@ export class MyContracts extends Component{
         const { navigate } = this.props.navigation;
         return (
             <View style={{flex: 1}}>
+                <Api />
                 <ScrollView contentContainerStyle={{paddingVertical: 20}}>
                     {images.map(({name, image, url, key}) =>
                         <Card title={`CARD ${key}`} image={image} key={key}>

@@ -1,10 +1,8 @@
 import React from 'react';
-import { Button, Linking, FlatList, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, Button, Linking, FlatList, StyleSheet, Text, View } from 'react-native';
 import { Constants, WebBrowser } from 'expo';
 
-
-/* BETA TEST : LES BOUTONS SONT CASSES */
-export default class App extends React.Component {
+/*export class Api extends React.Component {
     constructor(props) {
         super(props);
         this.state = { isLoading: true }
@@ -29,7 +27,6 @@ export default class App extends React.Component {
             });
     }
 
-
     _handlePress = (url) => {
         Linking.openURL(url);
         this.props.onPress && this.props.onPress();
@@ -50,15 +47,14 @@ export default class App extends React.Component {
                         data={this.state.dataSource}
                         renderItem={({item}) => <View>
                             <Text>{item.id} : {item.label} et link : </Text>
-                            <Button onPress={console.log("dadzada")} title="Document" style={{flex:1}}/>
+                            <Button onPress={() => {this._handlePress(item.link)}} title="Document" style={{flex:1}}/>
                         </View>}
                         keyExtractor={(item, index) => index.toString()}
                     />
                 </View>
             )
     }
-
-}
+}*/
 
 
 /*
@@ -171,12 +167,10 @@ export default class App extends React.Component {
 */
 
 
-/*
 
-Get contract
+//Get contract
 
-export default class App extends React.Component {
-
+export class Api extends React.Component {
     constructor(props){
         super(props);
         this.state ={ isLoading: true}
@@ -184,24 +178,21 @@ export default class App extends React.Component {
 
     componentDidMount(){
         return fetch('https://api.santiane.fr/etna/mobilecamp/contract?id=2570')
-            .then((response) => response.json())
-            .then((responseJson) => {
-                let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
-                console.log(data.id);
-                this.setState({
-                    isLoading: false,
-                    dataSource: data,
-                }, function(){
+        .then((response) => response.json())
+        .then((responseJson) => {
+            let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
+            console.log(data.id);
+            this.setState({
+                isLoading: false,
+                dataSource: data,
+            }, function(){
 
-                });
-
-            })
-            .catch((error) =>{
-                console.error(error);
             });
+        })
+        .catch((error) =>{
+            console.error(error);
+        });
     }
-
-
 
     render(){
         if(this.state.isLoading){
@@ -217,7 +208,7 @@ export default class App extends React.Component {
             </View>
         );
     }
-}*/
+}
 
 const styles = StyleSheet.create({
     container: {
