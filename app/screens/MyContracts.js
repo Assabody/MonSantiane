@@ -1,34 +1,8 @@
 import React, { Component } from "react";
-import { ScrollView, Text, Linking, View } from "react-native";
+import {ScrollView, Text, Linking, View, StyleSheet} from "react-native";
 import { Card, Button } from "react-native-elements";
 import { GetContracts } from "../api/GetContracts";
 
-// const images = [
-//     {
-//         key: 1,
-//         name: "Nathan Anderson",
-//         image: require("../images/1.jpg"),
-//         url: "https://unsplash.com/photos/C9t94JC4_L8"
-//     },
-//     {
-//         key: 2,
-//         name: "Jamison McAndie",
-//         image: require("../images/2.jpg"),
-//         url: "https://unsplash.com/photos/waZEHLRP98s"
-//     },
-//     {
-//         key: 3,
-//         name: "Alberto Restifo",
-//         image: require("../images/3.jpg"),
-//         url: "https://unsplash.com/photos/cFplR9ZGnAk"
-//     },
-//     {
-//         key: 4,
-//         name: "John Towner",
-//         image: require("../images/4.jpg"),
-//         url: "https://unsplash.com/photos/89PFnHKg8HE"
-//     }
-// ];
 
 export class MyContracts extends Component{
     static navigationOptions = {
@@ -64,3 +38,30 @@ export class MyContracts extends Component{
         )
     }
 };
+
+
+const styles = StyleSheet.create(
+    {
+        MainContainer:
+            { justifyContent: 'center',
+
+                flex:1,
+                margin: 10
+
+            },
+
+        TextStyle:
+            {
+                fontSize: 18,
+                textAlign: 'center',
+                color: '#000',
+            },
+
+        TitleStyle:
+            {
+                fontSize: 24,
+                textAlign: 'center',
+                color: '#000',
+                paddingBottom: 10,
+            },
+    });
