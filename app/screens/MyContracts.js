@@ -1,42 +1,46 @@
 import React, { Component } from "react";
-import { ScrollView, Text, Linking, View } from "react-native";
+import {ScrollView, Text, Linking, View, StyleSheet} from "react-native";
 import { Card, Button } from "react-native-elements";
-import { GetContracts } from "../api/GetContracts";
-
-// const images = [
-//     {
-//         key: 1,
-//         name: "Nathan Anderson",
-//         image: require("../images/1.jpg"),
-//         url: "https://unsplash.com/photos/C9t94JC4_L8"
-//     },
-//     {
-//         key: 2,
-//         name: "Jamison McAndie",
-//         image: require("../images/2.jpg"),
-//         url: "https://unsplash.com/photos/waZEHLRP98s"
-//     },
-//     {
-//         key: 3,
-//         name: "Alberto Restifo",
-//         image: require("../images/3.jpg"),
-//         url: "https://unsplash.com/photos/cFplR9ZGnAk"
-//     },
-//     {
-//         key: 4,
-//         name: "John Towner",
-//         image: require("../images/4.jpg"),
-//         url: "https://unsplash.com/photos/89PFnHKg8HE"
-//     }
-// ];
 
 export class MyContracts extends Component{
+    constructor(props){
+        super(props);
+        this.state ={ isLoading: true}
+    }
+
     static navigationOptions = {
         title: 'Mes Contrats',
     };
+
+    componentDidMount(){
+        return fetch('https://api.santiane.fr/etna/mobilecamp/contract?id=2570')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
+                console.log(data.id);
+                this.setState({
+                    isLoading: false,
+                    dataSource: [data, data, data, data],
+                }, function(){
+
+                });
+            })
+            .catch((error) =>{
+                console.error(error);
+            });
+    }
+
     render() {
         const { navigate } = this.props.navigation;
-        return (
+        i = 0;
+        if(this.state.isLoading){
+            return(
+                <View style={styles.container}>
+                    <Text>Bonjour ! </Text>
+                </View>
+            )
+        }
+        return(
             <View style={{flex: 1}}>
                 <Button
                     title="FAQ"
@@ -44,23 +48,45 @@ export class MyContracts extends Component{
                         navigate('FAQ')
                     }
                 />
-                <GetContracts />
-                {/*<ScrollView contentContainerStyle={{paddingVertical: 20}}>*/}
-                    {/*{images.map(({name, image, url, key}) =>*/}
-                        {/*<Card title={`CARD ${key}`} image={image} key={key}>*/}
-                            {/*<Text style={{marginBottom: 10}}>*/}
-                                {/*Photo by {name}.*/}
-                            {/*</Text>*/}
-                            {/*<Button*/}
-                                {/*title={"Go to " + name + "'s profile"}*/}
-                                {/*onPress={() =>*/}
-                                    {/*navigate('ContractDetail', {name: name})*/}
-                                {/*}*/}
-                            {/*/>*/}
-                        {/*</Card>*/}
-                    {/*)}*/}
-                {/*</ScrollView>*/}
+                <View style={styles.container}>
+                    <ScrollView contentContainerStyle={{paddingVertical: 20}}>
+                        {this.state.dataSource.map(({contractnumber, bankownerlastname, insurednumber, bankownerfirstname, dateeffective, dateending, formulaname, id}) =>
+                            <Card key={id + i++}>
+                                <Text>Contrat N°{contractnumber}</Text>
+                                <Text>Titulaire du contrat : {bankownerlastname} {bankownerfirstname}</Text>
+                                <Text>Date d'effet : {dateeffective}</Text>
+                                <Text>Date de fin : {dateending}</Text>
+                                <Text>Formule : {formulaname}</Text>
+                                <Text>Nombre de bénéficiaires : {insurednumber}</Text>
+                                <Button
+                                    title={"Détails du contrat"}
+                                    onPress={() =>
+                                        navigate('ContractDetail', {id: id})
+                                    }
+                                />
+                            </Card>
+                        )}
+                    </ScrollView>
+                    {/*<Text>{this.state.dataSource.id}</Text>*/}
+                    {/*<Text>Contrat N°{this.state.dataSource.contractnumber}</Text>*/}
+                    {/*<Text>{this.state.dataSource.membership_id}</Text>*/}
+                    {/*<Text>{this.state.dataSource.bankowneraddress}, {this.state.dataSource.bankownerzipcode}, {this.state.dataSource.bankownercity}</Text>*/}
+                    {/*<Text>{this.state.dataSource.bankownercountry}</Text>*/}
+                </View>
             </View>
-        )
+        );
     }
 };
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#ffffff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    button: {
+        flex: 1,
+    },
+});
