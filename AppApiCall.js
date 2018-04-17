@@ -2,157 +2,59 @@ import React from 'react';
 import { AppRegistry, Button, Linking, FlatList, StyleSheet, Text, View } from 'react-native';
 import { Constants, WebBrowser } from 'expo';
 
-/*export class Api extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { isLoading: true }
-    }
-
-    componentDidMount() {
-        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"@","password":"codecampetna", "auto_refresh":1}');
-        return fetch('https://api.santiane.fr/etna/mobilecamp/document?filter={"contract_id":2570}')
+export class Api {
+    getContract(idContract) {
+        return fetch('https://api.santiane.fr/etna/mobilecamp/contract?id=' + idContract)
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")"))));
-                this.setState({
-                    isLoading: false,
-                    dataSource: JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")"))),
-                }, function(){
-
-                });
-
+                return JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
             })
             .catch((error) =>{
                 console.error(error);
+                return "Error";
             });
     }
-
-    _handlePress = (url) => {
-        Linking.openURL(url);
-        this.props.onPress && this.props.onPress();
-    };
-
-    render() {
-        if (this.state.isLoading)
-            return (
-                <View style={styles.container}>
-                    <Text>Open up App.js to start working on your app!</Text>
-                </View>
-            );
-        else
-            return (
-                <View style={styles.container}>
-                    <FlatList
-                        style={{flex: 2, backgroundColor: '#A1FFC2'}}
-                        data={this.state.dataSource}
-                        renderItem={({item}) => <View>
-                            <Text>{item.id} : {item.label} et link : </Text>
-                            <Button onPress={() => {this._handlePress(item.link)}} title="Document" style={{flex:1}}/>
-                        </View>}
-                        keyExtractor={(item, index) => index.toString()}
-                    />
-                </View>
-            )
-    }
-}*/
+    /*return(
+            <View style={styles.container}>
+                <Text>{this.state.dataSource.id}, {this.state.dataSource.formulaname}</Text>
+            </View>
+        );*/
 
 
-/*
-
-get documents from contract
-
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { isLoading: true }
-    }
-
-    componentDidMount() {
-        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"etna@santiane.fr","password":"codecampetna", "auto_refresh":1}');
-        return fetch('https://api.santiane.fr/etna/mobilecamp/document?filter={"contract_id":2570}')
+    getDocumentFromContractId(idContract) {
+        return fetch('https://api.santiane.fr/etna/mobilecamp/document?filter={"contract_id":' + idContract +'}')
             .then((response) => response.json())
             .then((responseJson) => {
-
-                console.log(JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")"))));
-                this.setState({
-                    isLoading: false,
-                    dataSource: JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")"))),
-                }, function(){
-
-                });
-
+                return JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
             })
             .catch((error) =>{
                 console.error(error);
+                return "Error";
             });
     }
-
-    render() {
-        if (this.state.isLoading)
-            return (
-                <View style={styles.container}>
-                    <Text>Open up App.js to start working on your app!</Text>
-                </View>
-            );
-        else
-            return (
-                <View style={styles.container}>
-                    <FlatList
-                        data={this.state.dataSource}
-                        renderItem={({item}) => <Text>{item.id} : {item.label} et link : {item.link}</Text>}
-                        keyExtractor={(item, index) => index.toString()}
+    /*return (
+         <View style={styles.container}>
+             <FlatList
+                   data={this.state.dataSource}
+                   renderItem={({item}) => <Text>{item.id} : {item.label} et link : {item.link}</Text>}
+                   keyExtractor={(item, index) => index.toString()}
                     />
-                </View>
-            )
+          </View>
+       )*/
+
+
+    getDocumentCategories() {
+        return fetch('https://api.santiane.fr/etna/mobilecamp/Document_category?type=all')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                return responseJson.value;
+            })
+            .catch((error) =>{
+                console.error(error);
+                return "Error";
+            });
     }
-
-}
-
-*/
-
-
-
-
-
-/*
-
-Get Documents Categories
-
-export default class App extends React.Component {
-    constructor(props) {
-  super(props);
-  this.state = { isLoading: true }
-}
-
-  componentDidMount() {
-      fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"etna@santiane.fr","password":"codecampetna", "auto_refresh":1}');
-      return fetch('https://api.santiane.fr/etna/mobilecamp/Document_category?type=all')
-          .then((response) => response.json())
-          .then((responseJson) => {
-
-              console.log(responseJson.value);
-              this.setState({
-                  isLoading: false,
-                  dataSource: responseJson.value,
-              }, function(){
-
-              });
-
-          })
-          .catch((error) =>{
-              console.error(error);
-          });
-  }
-
-  render() {
-      if (this.state.isLoading)
-          return (
-              <View style={styles.container}>
-                  <Text>Open up App.js to start working on your app!</Text>
-              </View>
-          );
-      else
-          return (
+    /*return (
               <View style={styles.container}>
                   <FlatList
                       data={this.state.dataSource}
@@ -160,59 +62,21 @@ export default class App extends React.Component {
                       keyExtractor={(item, index) => index.toString()}
                   />
               </View>
-          )
-  }
+          )*/
 
-}
-*/
-
-
-
-
-
-
-/*
-
-remboursement de la personne connectée en fonction de la catégorie du remboursement
-
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {isLoading: true}
-    }
-
-    componentDidMount() {
-        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"etna@santiane.fr","password":"codecampetna", "auto_refresh":1}');
+    getRefundFromRefundCategorie(idCategorie) {
         return fetch('https://api.santiane.fr/etna/mobilecamp/refund?filter={"category_id":"1"}')
             .then((response) => response.json())
             .then((responseJson) => {
                 let res = JSON.parse(JSON.stringify(eval("(" + responseJson.value + ")")));
-                console.log(res.value);
-                this.setState({
-                    isLoading: false,
-                    dataSource: res.value,
-                }, () => {});
+                return res.value;
             })
             .catch((error) => {
                 console.error(error);
+                return "Error"
             });
     }
-
-
-    _handlePress = (url) => {
-        Linking.openURL(url);
-        this.props.onPress && this.props.onPress();
-    };
-
-    render() {
-        if (this.state.isLoading)
-            return (
-                <View style={styles.container}>
-                    <Text>Open up App.js to start working on your app!</Text>
-                </View>
-            );
-        else
-            return (
+    /*return (
                 <View style={styles.container}>
                     <FlatList
                         style={{flex: 2}}
@@ -229,67 +93,20 @@ export default class App extends React.Component {
                         keyExtractor={(item, index) => index.toString()}
                     />
                 </View>
-            )
-    }
+            )*/
 
-
-    renderFirstItem(data) {
-        let { item, index } = data;
-        return (
-            <View style={{flex: 2}}>
-                <Text>{item.id}, {item.person_id}, {item.refund_id}</Text>
-            </View>
-        )
-    }
-
-}*/
-
-
-/*
-
-    get formules cathegories
-
-
-    export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {isLoading: true}
-    }
-
-    componentDidMount() {
-        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"etna@santiane.fr","password":"codecampetna", "auto_refresh":1}');
+    getFormuleCategories() {
         return fetch('https://api.santiane.fr/etna/mobilecamp/refund_category?type=all')
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson.value);
-                this.setState({
-                    isLoading: false,
-                    dataSource: responseJson.value,
-                }, function () {
-
-                });
-
+                return responseJson.value;
             })
             .catch((error) => {
                 console.error(error);
+                return "Error";
             });
     }
-
-
-    _handlePress = (url) => {
-        Linking.openURL(url);
-        this.props.onPress && this.props.onPress();
-    };
-
-    render() {
-        if (this.state.isLoading)
-            return (
-                <View style={styles.container}>
-                    <Text>Open up App.js to start working on your app!</Text>
-                </View>
-            );
-        else
-            return (
+    /*return (
                 <View style={styles.container}>
                     <FlatList
                         style={{flex: 2}}
@@ -300,59 +117,20 @@ export default class App extends React.Component {
                         keyExtractor={(item, index) => index.toString()}
                     />
                 </View>
-            )
-    }
-}
+            )*/
 
-*/
-
-
-
-/*
-
-    get persons from contract id
-
-
-    export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {isLoading: true}
-    }
-
-    componentDidMount() {
-        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"etna@santiane.fr","password":"codecampetna", "auto_refresh":1}');
-        return fetch('https://api.santiane.fr/etna/mobilecamp/person?filter={"contract_id":"2570"}')
+    getPersonFromContractId(contractId) {
+        return fetch('https://api.santiane.fr/etna/mobilecamp/person?filter={"contract_id":"' + contractId + '"}') //2570
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(JSON.parse(JSON.stringify(eval("(" + responseJson.value + ")"))));
-                this.setState({
-                    isLoading: false,
-                    dataSource: JSON.parse(JSON.stringify(eval("(" + responseJson.value + ")"))),
-                }, function () {
-
-                });
-
+                return JSON.parse(JSON.stringify(eval("(" + responseJson.value + ")")));
             })
             .catch((error) => {
                 console.error(error);
+                return "Error";
             });
     }
-
-
-    _handlePress = (url) => {
-        Linking.openURL(url);
-        this.props.onPress && this.props.onPress();
-    };
-
-    render() {
-        if (this.state.isLoading)
-            return (
-                <View style={styles.container}>
-                    <Text>Open up App.js to start working on your app!</Text>
-                </View>
-            );
-        else
-            return (
+/* return (
                 <View style={styles.container}>
                     <FlatList
                         style={{flex: 2}}
@@ -363,56 +141,8 @@ export default class App extends React.Component {
                         keyExtractor={(item, index) => index.toString()}
                     />
                 </View>
-            )
-    }
-}
+            )*/
 
-*/
-
-
-
-
-
-//Get contract
-
-export class Api extends React.Component {
-    constructor(props){
-        super(props);
-        this.state ={ isLoading: true}
-    }
-
-    componentDidMount(){
-        return fetch('https://api.santiane.fr/etna/mobilecamp/contract?id=2570')
-        .then((response) => response.json())
-        .then((responseJson) => {
-            let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
-            console.log(data.id);
-            this.setState({
-                isLoading: false,
-                dataSource: data,
-            }, function(){
-
-            });
-        })
-        .catch((error) =>{
-            console.error(error);
-        });
-    }
-
-    render(){
-        if(this.state.isLoading){
-            return(
-                <View style={styles.container}>
-                    <Text>Salut ! </Text>
-                </View>
-            )
-        }
-        return(
-            <View style={styles.container}>
-                <Text>{this.state.dataSource.id}, {this.state.dataSource.formulaname}</Text>
-            </View>
-        );
-    }
 }
 
 const styles = StyleSheet.create({
