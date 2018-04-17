@@ -168,6 +168,211 @@ export default class App extends React.Component {
 
 
 
+
+
+
+/*
+
+remboursement de la personne connectée en fonction de la catégorie du remboursement
+
+export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {isLoading: true}
+    }
+
+    componentDidMount() {
+        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"etna@santiane.fr","password":"codecampetna", "auto_refresh":1}');
+        return fetch('https://api.santiane.fr/etna/mobilecamp/refund?filter={"category_id":"1"}')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                let res = JSON.parse(JSON.stringify(eval("(" + responseJson.value + ")")));
+                console.log(res.value);
+                this.setState({
+                    isLoading: false,
+                    dataSource: res.value,
+                }, () => {});
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+
+    _handlePress = (url) => {
+        Linking.openURL(url);
+        this.props.onPress && this.props.onPress();
+    };
+
+    render() {
+        if (this.state.isLoading)
+            return (
+                <View style={styles.container}>
+                    <Text>Open up App.js to start working on your app!</Text>
+                </View>
+            );
+        else
+            return (
+                <View style={styles.container}>
+                    <FlatList
+                        style={{flex: 2}}
+                        data={this.state.dataSource}
+                        renderItem={({item}) => <View>
+                            <Text>{item.id} : {item.enumrefundcategory},</Text>
+                                <FlatList
+                                    stryle={{flex: 2}}
+                                    data={item.provision_list}
+                                    renderItem={this.renderFirstItem.bind(this)}
+                                    keyExtractor={(item2, index2) => index2.toString()}
+                                />
+                        </View>}
+                        keyExtractor={(item, index) => index.toString()}
+                    />
+                </View>
+            )
+    }
+
+
+    renderFirstItem(data) {
+        let { item, index } = data;
+        return (
+            <View style={{flex: 2}}>
+                <Text>{item.id}, {item.person_id}, {item.refund_id}</Text>
+            </View>
+        )
+    }
+
+}*/
+
+
+/*
+
+    get formules cathegories
+
+
+    export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {isLoading: true}
+    }
+
+    componentDidMount() {
+        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"etna@santiane.fr","password":"codecampetna", "auto_refresh":1}');
+        return fetch('https://api.santiane.fr/etna/mobilecamp/refund_category?type=all')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson.value);
+                this.setState({
+                    isLoading: false,
+                    dataSource: responseJson.value,
+                }, function () {
+
+                });
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+
+    _handlePress = (url) => {
+        Linking.openURL(url);
+        this.props.onPress && this.props.onPress();
+    };
+
+    render() {
+        if (this.state.isLoading)
+            return (
+                <View style={styles.container}>
+                    <Text>Open up App.js to start working on your app!</Text>
+                </View>
+            );
+        else
+            return (
+                <View style={styles.container}>
+                    <FlatList
+                        style={{flex: 2}}
+                        data={this.state.dataSource}
+                        renderItem={({item}) => <View>
+                            <Text>{item.id} : {item.label} : </Text>
+                        </View>}
+                        keyExtractor={(item, index) => index.toString()}
+                    />
+                </View>
+            )
+    }
+}
+
+*/
+
+
+
+/*
+
+    get persons from contract id
+
+
+    export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {isLoading: true}
+    }
+
+    componentDidMount() {
+        fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"etna@santiane.fr","password":"codecampetna", "auto_refresh":1}');
+        return fetch('https://api.santiane.fr/etna/mobilecamp/person?filter={"contract_id":"2570"}')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log(JSON.parse(JSON.stringify(eval("(" + responseJson.value + ")"))));
+                this.setState({
+                    isLoading: false,
+                    dataSource: JSON.parse(JSON.stringify(eval("(" + responseJson.value + ")"))),
+                }, function () {
+
+                });
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+
+    _handlePress = (url) => {
+        Linking.openURL(url);
+        this.props.onPress && this.props.onPress();
+    };
+
+    render() {
+        if (this.state.isLoading)
+            return (
+                <View style={styles.container}>
+                    <Text>Open up App.js to start working on your app!</Text>
+                </View>
+            );
+        else
+            return (
+                <View style={styles.container}>
+                    <FlatList
+                        style={{flex: 2}}
+                        data={this.state.dataSource}
+                        renderItem={({item}) => <View>
+                            <Text>{item.id} : {item.firstname}, {item.lastname} : </Text>
+                        </View>}
+                        keyExtractor={(item, index) => index.toString()}
+                    />
+                </View>
+            )
+    }
+}
+
+*/
+
+
+
+
+
 //Get contract
 
 export class Api extends React.Component {
