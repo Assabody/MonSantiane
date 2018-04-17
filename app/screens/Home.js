@@ -4,6 +4,9 @@ import { MyContracts } from './MyContracts';
 import { ContractDetail } from './ContractDetail';
 import { FontAwesome } from "react-native-vector-icons";
 import { FaqNavigator } from './../../faq';
+import { Asktorefund } from './Asktorefund';
+import { Documents } from './Documents';
+import { Insured } from './Insured';
 
 const stackNav = StackNavigator(
     {
@@ -18,6 +21,15 @@ const stackNav = StackNavigator(
         },
         FAQ: {
             screen: FaqNavigator,
+        },
+        Asktorefund: {
+            screen: Asktorefund,
+        },
+        Documents: {
+            screen: Documents,
+        },
+        Insured: {
+            screen: Insured,
         }
     },
     {

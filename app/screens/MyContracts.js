@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ScrollView, Text, Linking, View, StyleSheet} from "react-native";
+import {ScrollView, Text, View, StyleSheet} from "react-native";
 import { Card, Button } from "react-native-elements";
 
 export class MyContracts extends Component{
@@ -48,16 +48,12 @@ export class MyContracts extends Component{
                         navigate('FAQ')
                     }
                 />
-                <View style={styles.container}>
+                <View style={styles.container} style={{flex: 1}}>
                     <ScrollView contentContainerStyle={{paddingVertical: 20}}>
-                        {this.state.dataSource.map(({contractnumber, bankownerlastname, insurednumber, bankownerfirstname, dateeffective, dateending, formulaname, id}) =>
+                        {this.state.dataSource.map(({contractnumber, formulaname, id}) =>
                             <Card key={id + i++}>
+                                <Text>Formule  {formulaname}</Text>
                                 <Text>Contrat N°{contractnumber}</Text>
-                                <Text>Titulaire du contrat : {bankownerlastname} {bankownerfirstname}</Text>
-                                <Text>Date d'effet : {dateeffective}</Text>
-                                <Text>Date de fin : {dateending}</Text>
-                                <Text>Formule : {formulaname}</Text>
-                                <Text>Nombre de bénéficiaires : {insurednumber}</Text>
                                 <Button
                                     title={"Détails du contrat"}
                                     onPress={() =>
@@ -67,11 +63,6 @@ export class MyContracts extends Component{
                             </Card>
                         )}
                     </ScrollView>
-                    {/*<Text>{this.state.dataSource.id}</Text>*/}
-                    {/*<Text>Contrat N°{this.state.dataSource.contractnumber}</Text>*/}
-                    {/*<Text>{this.state.dataSource.membership_id}</Text>*/}
-                    {/*<Text>{this.state.dataSource.bankowneraddress}, {this.state.dataSource.bankownerzipcode}, {this.state.dataSource.bankownercity}</Text>*/}
-                    {/*<Text>{this.state.dataSource.bankownercountry}</Text>*/}
                 </View>
             </View>
         );
