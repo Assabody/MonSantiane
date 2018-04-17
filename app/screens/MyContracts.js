@@ -13,14 +13,14 @@ export class MyContracts extends Component{
     };
 
     componentDidMount(){
-        return fetch('https://api.santiane.fr/etna/mobilecamp/contract?id=2570')
+        return fetch('https://api.santiane.fr/etna/mobilecamp/contract?filter={"limit":10}')
             .then((response) => response.json())
             .then((responseJson) => {
                 let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
                 console.log(data.id);
                 this.setState({
                     isLoading: false,
-                    dataSource: [data, data, data, data],
+                    dataSource: [data],
                 }, function(){
 
                 });
@@ -32,7 +32,6 @@ export class MyContracts extends Component{
 
     render() {
         const { navigate } = this.props.navigation;
-        i = 0;
         if(this.state.isLoading){
             return(
                 <View style={styles.container}>
@@ -51,7 +50,7 @@ export class MyContracts extends Component{
                 <View style={styles.container} style={{flex: 1}}>
                     <ScrollView contentContainerStyle={{paddingVertical: 20}}>
                         {this.state.dataSource.map(({contractnumber, formulaname, id}) =>
-                            <Card key={id + i++}>
+                            <Card key={id}>
                                 <Text>Formule  {formulaname}</Text>
                                 <Text>Contrat N°{contractnumber}</Text>
                                 <Button

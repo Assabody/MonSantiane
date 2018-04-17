@@ -12,33 +12,27 @@ export class ContractDetail extends Component{
         title: 'Détails du Contrat',
     };
 
-    // componentDidMount(){
-    //     return fetch('https://api.santiane.fr/etna/mobilecamp/contract?id=2570')
-    //         .then((response) => response.json())
-    //         .then((responseJson) => {
-    //             let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
-    //             this.setState({
-    //                 isLoading: false,
-    //                 dataSource: [data, data, data, data],
-    //             }, function(){
-    //
-    //             });
-    //         })
-    //         .catch((error) =>{
-    //             console.error(error);
-    //         });
-    // }
+    componentDidMount(){
+        var {params} = this.props.navigation.state;
+        return fetch('https://api.santiane.fr/etna/mobilecamp/contract?id=' + params.id)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
+                this.setState({
+                    isLoading: false,
+                    dataSource: [data],
+                }, function(){
+
+                });
+            })
+            .catch((error) =>{
+                console.error(error);
+            });
+    }
 
     render() {
         const { navigate } = this.props.navigation;
-        // i = 0;
-        // if(this.state.isLoading){
-        //     return(
-        //         <View style={styles.container}>
-        //             <Text>Bonjour ! </Text>
-        //         </View>
-        //     )
-        // }
+        var {params} = this.props.navigation.state;
         return(
             <View style={{flex: 1}}>
                 <Button
@@ -47,6 +41,7 @@ export class ContractDetail extends Component{
                         navigate('FAQ')
                     }
                 />
+                <Text>Bonjour le text : {params.id}</Text>
                 {/*<View style={styles.container} style={{flex: 1}}>*/}
                     {/*<ScrollView contentContainerStyle={{paddingVertical: 20}}>*/}
                         {/*{this.state.dataSource.map(({contractnumber, formulaname, id}) =>*/}
@@ -66,19 +61,19 @@ export class ContractDetail extends Component{
                 <Button
                     title="Bénéficiaires"
                     onPress={() =>
-                        navigate('Insured')
+                        navigate('Insured', {id: params.id})
                     }
                 />
                 <Button
                     title="Documents"
                     onPress={() =>
-                        navigate('Documents')
+                        navigate('Documents', {id: params.id})
                     }
                 />
                 <Button
                     title="Remboursements"
                     onPress={() =>
-                        navigate('Asktorefund')
+                        navigate('Asktorefund', {id: params.id})
                     }
                 />
             </View>
