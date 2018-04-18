@@ -23,10 +23,7 @@ const stackNav = StackNavigator(
             screen: FaqNavigator,
         },
         Asktorefund: {
-            screen: Asktorefund,
-            navigationOptions:({}) => ({
-                title: "Mes remboursements",
-            })
+            screen: Asktorefund
         },
         Documents: {
             screen: Documents,
