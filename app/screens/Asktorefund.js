@@ -7,9 +7,8 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 export class Asktorefund extends React.Component {
     constructor(props){
         super(props);
-        this.state ={ isLoading: true}
+        this.state ={ isLoading: true }
     }
-
 
     componentDidMount(){
         return fetch('https://api.santiane.fr/etna/mobilecamp/refund2?filter={"category_id":"1"}')
@@ -33,7 +32,7 @@ export class Asktorefund extends React.Component {
             if (status === '1') {
                 return (
                     <Row>
-                        <Col size={67} style={{backgroundColor: 'green'}}>
+                        <Col size={67} style={{backgroundColor: 'green', borderRightColor: 'black', borderRightWidth: 1}}>
                             <Text style={{color: 'white', padding: 5, textAlign: 'center'}}>Remboursement réglé le {date}</Text>
                         </Col>
                         <Col size={33} style={{backgroundColor: 'green'}}>
