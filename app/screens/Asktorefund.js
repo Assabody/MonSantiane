@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {ScrollView, Text, View, StyleSheet, FlatList} from "react-native";
 import { Card, Button } from "react-native-elements";
-import Moment from 'react-moment';
 
 export class Asktorefund extends React.Component {
     constructor(props){
