@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { StyleSheet } from 'react-native';
-import { List, ListItem } from 'react-native-elements';
+import { Text, View, TouchableOpacity } from 'react-native';
+import styles from '../style';
 
 export class ConnexionActivity extends Component
 {
@@ -12,74 +11,32 @@ export class ConnexionActivity extends Component
     render()
     {
         const { navigate } = this.props.navigation;
-        const list = [
-            {
-                title: 'Comment me connecter à mon espace ?',
-                icon: 'av-timer',
-                link: 'ActivationSpace'
-            },
-            {
-                title: 'J’ai perdu mes identifiants de connexion',
-                icon: 'flight-takeoff',
-                link: 'LoseId'
-            },
-            {
-                title: 'Des problèmes de connexion ?',
-                icon: 'flight-takeoff',
-                link: 'ActivationIssues'
-            },
-            {
-                title: 'Je souhaite changer d\'identifiants',
-                icon: 'av-timer',
-                link: 'ChangeMail'
-            },
-        ];
         return(
             <View>
                 <View>
                     <Text style = { styles.TextStyle }>Comment me connecter à mon espace ?</Text>
-                    <List>
-                        {
-                            list.map((item, i) => (
-                                <ListItem
-                                    key={i}
-                                    title={item.title}
-                                    leftIcon={{name: item.icon}}
-                                    onPress = { () => {
-                                        navigate(item.link);
-                                    }}
-                                />
-                            ))
-                        }
-                    </List>
+                    <TouchableOpacity onPress={() => navigate('ConnectSpace')}>
+                        <View style={styles.buttonClick}>
+                            <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Comment me connecter à mon espace ?</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('LoseConnectId')}>
+                        <View style={styles.buttonClick}>
+                            <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>J’ai perdu mes identifiants de connexion</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('ConnectionIssues')}>
+                        <View style={styles.buttonClick}>
+                            <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Des problèmes de connexion ?</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('ChangeMail')}>
+                        <View style={styles.buttonClick}>
+                            <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Je souhaite changer d'identifiants</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create(
-    {
-        MainContainer:
-            { justifyContent: 'center',
-
-                flex:1,
-                margin: 10
-
-            },
-
-        TextStyle:
-            {
-                fontSize: 18,
-                textAlign: 'center',
-                color: '#000',
-            },
-
-        TitleStyle:
-            {
-                fontSize: 24,
-                textAlign: 'center',
-                color: '#000',
-                paddingBottom: 10,
-            },
-    });

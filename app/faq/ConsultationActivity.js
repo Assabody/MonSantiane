@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { StyleSheet } from 'react-native';
-import { List, ListItem } from 'react-native-elements';
+import { Text, View, TouchableOpacity } from 'react-native';
+import styles from '../style';
 
 export class ConsultationActivity extends Component
 {
@@ -12,69 +11,27 @@ export class ConsultationActivity extends Component
     render()
     {
         const { navigate } = this.props.navigation;
-        const list = [
-            {
-                title: 'Comment activer mon espace ?',
-                icon: 'av-timer',
-                link: 'ActivationSpace'
-            },
-            {
-                title: 'J’ai perdu mes identifiants d’activation',
-                icon: 'flight-takeoff',
-                link: 'LoseId'
-            },
-            {
-                title: 'Je rencontre des problèmes d’activation',
-                icon: 'flight-takeoff',
-                link: 'ActivationIssues'
-            },
-        ];
         return(
             <View>
                 <View>
                     <Text style = { styles.TitleStyle }>Consultation de mes informations</Text>
-                    <List>
-                        {
-                            list.map((item, i) => (
-                                <ListItem
-                                    key={i}
-                                    title={item.title}
-                                    leftIcon={{name: item.icon}}
-                                    onPress = { () => {
-                                        navigate(item.link);
-                                    }}
-                                />
-                            ))
-                        }
-                    </List>
+                    <TouchableOpacity onPress={() => navigate('SeeContrat')}>
+                        <View style={styles.buttonClick}>
+                            <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Je ne vois pas mon contrat</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('Refund')}>
+                        <View style={styles.buttonClick}>
+                            <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Je ne vois pas mon remboursement</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('WrongInformation')}>
+                        <View style={styles.buttonClick}>
+                            <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Les informations renseignées sur mon espace sont inexactes</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create(
-    {
-        MainContainer:
-            { justifyContent: 'center',
-
-                flex:1,
-                margin: 10
-
-            },
-
-        TextStyle:
-            {
-                fontSize: 18,
-                textAlign: 'center',
-                color: '#000',
-            },
-
-        TitleStyle:
-            {
-                fontSize: 24,
-                textAlign: 'center',
-                color: '#000',
-                paddingBottom: 10,
-            },
-    });
