@@ -35,5 +35,5 @@ export default StyleSheet.create(
                 flex: 1,
                 backgroundColor: '#F57E20',
                 marginTop: 8
-            },
+            }
     });
