@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ScrollView, Text, View, StyleSheet} from "react-native";
+import {ScrollView, Text, View, StyleSheet, TouchableOpacity} from "react-native";
 import { Card, Button } from "react-native-elements";
 
 export class MyContracts extends Component{
@@ -51,14 +51,13 @@ export class MyContracts extends Component{
                     <ScrollView contentContainerStyle={{paddingVertical: 20}}>
                         {this.state.dataSource.map(({contractnumber, formulaname, id}) =>
                             <Card key={id}>
-                                <Text>Formule  {formulaname}</Text>
-                                <Text>Contrat N°{contractnumber}</Text>
-                                <Button
-                                    title={"Détails du contrat"}
-                                    onPress={() =>
-                                        navigate('ContractDetail', {id: id})
-                                    }
-                                />
+                                <Text style={styles.TitleStyle}>Formule {formulaname}</Text>
+                                <Text style={styles.TextStyle}>Contrat N°{contractnumber}</Text>
+                                <TouchableOpacity onPress={() => navigate('ContractDetail', {id: id})}>
+                                    <View style={styles.buttonClick}>
+                                        <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Détails du contrat</Text>
+                                    </View>
+                                </TouchableOpacity>
                             </Card>
                         )}
                     </ScrollView>
@@ -100,8 +99,10 @@ const styles = StyleSheet.create(
                 alignItems: 'center',
                 justifyContent: 'center',
             },
-        button:
+        buttonClick:
             {
                 flex: 1,
+                backgroundColor: '#F57E20',
+                marginTop: 8
             },
     });

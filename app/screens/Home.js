@@ -24,12 +24,21 @@ const stackNav = StackNavigator(
         },
         Asktorefund: {
             screen: Asktorefund,
+            navigationOptions:({}) => ({
+                title: "Mes remboursements",
+            })
         },
         Documents: {
             screen: Documents,
+            navigationOptions:({}) => ({
+                title: "Mes Documents",
+            })
         },
         Insured: {
             screen: Insured,
+            navigationOptions:({}) => ({
+                title: "Bénéficiaires",
+            })
         }
     },
     {
