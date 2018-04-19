@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Card } from 'react-native-elements';
+
 import styles from '../style';
 
 export class ConnexionActivity extends Component
@@ -12,7 +14,7 @@ export class ConnexionActivity extends Component
         const { navigate } = this.props.navigation;
         return(
             <View>
-                <View>
+                <Card>
                     <Text style = { styles.FaqTitleStyle }>Retrouvez ici les questions concernant la connexion a votre espace</Text>
                     <ScrollView>
                         <TouchableOpacity onPress={() => navigate('ConnectSpace')}>
@@ -36,7 +38,7 @@ export class ConnexionActivity extends Component
                             </View>
                         </TouchableOpacity>
                     </ScrollView>
-                </View>
+                </Card>
             </View>
         );
     }

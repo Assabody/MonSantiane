@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Card } from 'react-native-elements';
+
 import styles from '../style';
 
 export class ConsultationActivity extends Component
@@ -12,7 +14,7 @@ export class ConsultationActivity extends Component
         const { navigate } = this.props.navigation;
         return(
             <View>
-                <View>
+                <Card>
                     <Text style = { styles.FaqTitleStyle }>Retrouvez les questions concernant la consultation de vos informations</Text>
                     <ScrollView>
                         <TouchableOpacity onPress={() => navigate('SeeContrat')}>
@@ -31,7 +33,7 @@ export class ConsultationActivity extends Component
                             </View>
                         </TouchableOpacity>
                     </ScrollView>
-                </View>
+                </Card>
             </View>
         );
     }
