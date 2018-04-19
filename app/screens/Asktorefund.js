@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import {ScrollView, Text, View, StyleSheet, FlatList} from "react-native";
-import { Card, Button } from "react-native-elements";
+import { Card } from "react-native-elements";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import styles from '../style';
+import FAQButton from './FAQButton';
 
 
 export class Asktorefund extends React.Component {
@@ -103,45 +104,9 @@ export class Asktorefund extends React.Component {
                     )}
 
                 </ScrollView>
+                <FAQButton nav={this}/>
             </View>
             );
     }
 
 }
-
-// const styles = StyleSheet.create(
-//     {
-//         MainContainer:
-//             { justifyContent: 'center',
-//
-//                 flex:1,
-//                 margin: 10
-//
-//             },
-//
-//         TextStyle:
-//             {
-//                 fontSize: 18,
-//                 textAlign: 'center',
-//                 color: '#000',
-//             },
-//
-//         TitleStyle:
-//             {
-//                 fontSize: 24,
-//                 textAlign: 'center',
-//                 color: '#000',
-//                 paddingBottom: 10,
-//             },
-//         container:
-//             {
-//                 flex: 1,
-//                 backgroundColor: '#ffffff',
-//                 alignItems: 'center',
-//                 justifyContent: 'center',
-//             },
-//         button:
-//             {
-//                 flex: 1,
-//             },
-    // });

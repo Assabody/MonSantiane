@@ -5,6 +5,7 @@ import styless from '../style';
 
 import { StackNavigator } from 'react-navigation';
 import { Camera, Permissions } from 'expo';
+import FAQButton from './FAQButton';
 
 export class Documents extends React.Component {
     render() {
@@ -63,7 +64,6 @@ class HomeScreen extends React.Component {
         }
         else {
             if (this.state.arrayUri.length !== 0) {
-                console.log(this.state.arrayUri);
                 return (
                     <View style={styles.container}>
                         <Text> Ajouter un document</Text>
@@ -86,6 +86,7 @@ class HomeScreen extends React.Component {
                                 }} title="Voir le document" style={{flex: 1}}/>
                             </Card>
                         )}
+                        <FAQButton nav={this}/>
                     </View>
                 );
             }
@@ -109,6 +110,7 @@ class HomeScreen extends React.Component {
                                 </Card>
                         )}
                         </ScrollView>
+                        <FAQButton nav={this}/>
                     </View>
                 )
         }
@@ -131,7 +133,6 @@ class DetailsScreen extends React.Component {
     }
 
     async takePicture() {
-        console.log("pressed2");
         let photo = null;
         if (this.camera) {
             photo = await this.camera.takePictureAsync();

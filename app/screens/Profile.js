@@ -2,6 +2,7 @@ import React from "react";
 import {StyleSheet, View} from "react-native";
 import { Card, Button, Text } from "react-native-elements";
 import { onSignOut } from "../auth";
+import FAQButton from './FAQButton';
 
 export default  class Profile extends React.Component {
     constructor(props){
@@ -62,6 +63,7 @@ render() {
                     onPress={() => onSignOut().then(() => navigation.navigate("SignedOut"))}
                 />
             </Card>
+        <FAQButton nav={this}/>
         </View>)
     }
 }

@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { Card, Button, FormLabel, FormInput, FormValidationMessage } from "react-native-elements";
 
 import {isSignedIn, onSignIn} from "../auth";
+import FAQButton from "./FAQButton";
 
 export default class Signin extends React.Component {
     constructor() {
@@ -50,6 +51,7 @@ export default class Signin extends React.Component {
                         }}
                     />
                 </Card>
+                <FAQButton nav={this}/>
             </View>
         )
     }

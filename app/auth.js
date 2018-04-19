@@ -2,7 +2,6 @@ import React from 'react';
 import { AsyncStorage } from "react-native";
 
 export const onSignIn = (email, password) => {
-    console.log("Email: " + email + " Password: " + password);
     return fetch('https://api.santiane.fr/etna/mobilecamp/login?filter={"login":"' + email + '","password":"' + password + '", "auto_refresh":1}')
         .then((response) => response.json())
         .then((responseJson) => {

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import {ScrollView, Text, View, StyleSheet, TouchableOpacity} from "react-native";
+import {ScrollView, Text, View, StyleSheet, TouchableOpacity, Image} from "react-native";
 import { Card, Button } from "react-native-elements";
 import styles from '../style';
+import FAQButton from './FAQButton';
 
 export class MyContracts extends Component{
     constructor(props){
@@ -36,18 +37,12 @@ export class MyContracts extends Component{
         if(this.state.isLoading){
             return(
                 <View style={styles.container}>
-                    <Text>Bonjour ! </Text>
+                    <Image source={require("../images/throbber_13.gif")}/>
                 </View>
             )
         }
         return(
             <View style={{flex: 1}}>
-                <Button
-                    title="FAQ"
-                    onPress={() =>
-                        navigate('FAQ')
-                    }
-                />
                 <View style={styles.container} style={{flex: 1}}>
                     <ScrollView contentContainerStyle={{paddingVertical: 20}}>
                         {this.state.dataSource.map(({contractnumber, formulaname, id}) =>
@@ -63,6 +58,7 @@ export class MyContracts extends Component{
                         )}
                     </ScrollView>
                 </View>
+                <FAQButton nav={this}/>
             </View>
         );
     }

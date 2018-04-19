@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {ScrollView, Text, View, StyleSheet} from "react-native";
 import { Card, Button } from "react-native-elements";
 import { Col, Row, Grid } from "react-native-easy-grid";
+import FAQButton from './FAQButton';
 
 export class Insured extends React.Component {
     constructor(props){
@@ -77,6 +78,7 @@ export class Insured extends React.Component {
                     </Card>
                     )}
                 </ScrollView>
+                <FAQButton nav={this}/>
             </View>
         );
     }
