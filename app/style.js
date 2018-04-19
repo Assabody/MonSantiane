@@ -17,6 +17,14 @@ export default StyleSheet.create(
                 color: '#000',
             },
 
+        TextStyleDetails:
+            {
+                fontSize: 17,
+                paddingBottom: 5,
+                // textAlign: 'center',
+                color: '#000',
+            },
+
         TitleStyle:
             {
                 fontSize: 24,
