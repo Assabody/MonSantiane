@@ -74,7 +74,7 @@ export class ContractDetail extends Component{
                                             <ScrollView>
                                                 <TouchableOpacity onPress={() => navigate('Insured', {id: params.id})}>
                                                     <View style={styles.buttonClick}>
-                                                        <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 1}}>+ d'infos</Text>
+                                                        <Text style={styles.buttonText}>+ d'infos</Text>
                                                     </View>
                                                 </TouchableOpacity>
                                             </ScrollView>
@@ -89,7 +89,7 @@ export class ContractDetail extends Component{
                                         <ScrollView>
                                             <TouchableOpacity onPress={() => navigate('Documents', {id: params.id})}>
                                                 <View style={styles.buttonClick}>
-                                                    <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Documents</Text>
+                                                    <Text style={styles.buttonText}>Documents</Text>
                                                 </View>
                                             </TouchableOpacity>
                                         </ScrollView>
@@ -98,7 +98,7 @@ export class ContractDetail extends Component{
                                         <ScrollView>
                                             <TouchableOpacity onPress={() => navigate('Asktorefund', {id: params.id})}>
                                                 <View style={styles.buttonClick}>
-                                                    <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Remboursements</Text>
+                                                    <Text style={styles.buttonText}>Remboursements</Text>
                                                 </View>
                                             </TouchableOpacity>
                                         </ScrollView>
