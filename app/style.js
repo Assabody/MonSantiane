@@ -13,8 +13,23 @@ export default StyleSheet.create(
             {
                 fontSize: 18,
                 paddingBottom: 3,
+                color: '#000',
+            },
+
+        TextStyleDetails:
+            {
+                fontSize: 17,
+                paddingBottom: 5,
                 // textAlign: 'center',
                 color: '#000',
+            },
+
+        TextStyleRefunds:
+            {
+                fontSize: 16,
+                paddingBottom: 3,
+                // textAlign: 'center',
+                color: 'gray',
             },
 
         TitleStyle:
@@ -35,6 +50,12 @@ export default StyleSheet.create(
             {
                 flex: 1,
                 backgroundColor: '#F57E20',
+                fontSize: 16,
+            },
+        buttonText: {
+            color: '#ffffff',
+            fontSize: 18,
+            textAlign: 'center',
             },
         TextLink:
             {

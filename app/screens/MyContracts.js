@@ -56,7 +56,7 @@ export class MyContracts extends Component{
                                 <Text style={styles.TextStyle}>Contrat N°{contractnumber}</Text>
                                 <TouchableOpacity onPress={() => navigate('ContractDetail', {id: id})}>
                                     <View style={styles.buttonClick}>
-                                        <Text style={{color: '#ffffff',fontSize: 18,textAlign: 'center', padding: 7}}>Détails du contrat</Text>
+                                        <Text style={styles.buttonText}>Détails du contrat</Text>
                                     </View>
                                 </TouchableOpacity>
                             </Card>
