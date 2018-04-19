@@ -13,10 +13,6 @@ export class Documents extends React.Component {
 }
 
 class HomeScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Welcome'
-    };
-
     constructor(props) {
         super(props);
         this.state = { isLoading: true, arrayUri: []};
@@ -67,9 +63,11 @@ class HomeScreen extends React.Component {
                 return (
                     <View style={styles.container}>
                         <Text> Ajouter un document</Text>
-                        <Button title="Add Document" onPress={() => {
-                            navigate("Details", {returnData: this.returnData.bind(this), uriArray: this.state.arrayUri})
-                        }}/>
+                        <TouchableOpacity onPress={() => navigate("Details", {returnData: this.returnData.bind(this), uriArray: this.state.arrayUri})}>
+                            <View style={styless.buttonClick}>
+                                <Text style={styless.buttonText}>Ajouter un document</Text>
+                            </View>
+                        </TouchableOpacity>
                         <FlatList
                             data={this.state.arrayUri}
                             horizontal
@@ -92,10 +90,16 @@ class HomeScreen extends React.Component {
             else
                 return (
                     <View style={styles.container}>
-                        <Text> Ajouter un document</Text>
-                        <Button title="Add Document" onPress={() => {
+                        <ScrollView>
+                            <TouchableOpacity onPress={() => navigate("Details", {returnData: this.returnData.bind(this), uriArray: this.state.arrayUri})}>
+                                <View style={styless.buttonClick}>
+                                    <Text style={styless.buttonText}>Ajouter un document</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ScrollView>
+                        {/*<Button title="Add Document" onPress={() => {
                             navigate("Details", {returnData: this.returnData.bind(this), uriArray: this.state.arrayUri})
-                        }}/>
+                        }}/>*/}
                         <ScrollView>
                             {console.log(this.state.dataSource[0]) }
                         {this.state.dataSource.map(({id, label, link}) =>
@@ -108,6 +112,7 @@ class HomeScreen extends React.Component {
                                     </TouchableOpacity>
                                 </Card>
                         )}
+                        <Text></Text>
                         </ScrollView>
                     </View>
                 )
@@ -171,6 +176,10 @@ const RootStack = StackNavigator(
     },
     {
         initialRouteName: 'Home',
+        headerMode: 'none',
+        navigationOptions:({}) => ({
+            headerVisible: false,
+        })
     }
 );
 
