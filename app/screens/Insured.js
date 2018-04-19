@@ -60,6 +60,9 @@ export class Insured extends React.Component {
                     <Card style={{flex: 1, padding: 0, margin: 0}}>
                         <Grid>
                             <Row>
+                                <Col><Text style={{color: '#F57E20', fontSize:18}}>{type}</Text></Col>
+                            </Row>
+                            <Row>
                                 <Col><Text style={{fontWeight: 'bold'}}>{gender} {lastname.toUpperCase()} {firstname}</Text></Col>
                             </Row>
                             { address(addresslabel, zipcode, city, country) }
@@ -68,7 +71,7 @@ export class Insured extends React.Component {
                                 <Col><Text style={{fontWeight: 'bold'}}>N° sécurité sociale: {socialsecuritynumber}</Text></Col>
                             </Row>
                             <Row>
-                                <Col><Text>{regime == null ? type : regime + " - " + type}</Text></Col>
+                                <Col><Text>{regime == null ? '' : regime}</Text></Col>
                             </Row>
                         </Grid>
                     </Card>
