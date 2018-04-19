@@ -47,7 +47,7 @@ export default class Signin extends React.Component {
                                 );
                         }}>
                             <View style={styless.buttonClick}>
-                                <Text style={styless.buttonText}>Se deconnecter</Text>
+                                <Text style={styless.buttonText}>Se connecter</Text>
                             </View>
                         </TouchableOpacity>
                     </ScrollView>
