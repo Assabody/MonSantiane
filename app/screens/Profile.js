@@ -31,7 +31,8 @@ export default  class Profile extends React.Component {
     }
 
 render() {
-        if(this.state.isLoading){
+    const { navigate } = this.props.navigation;
+    if(this.state.isLoading){
             return(
                 <View style={styles.container}>
                     <Text>Loading...</Text>
@@ -58,17 +59,12 @@ render() {
                     <Text style={{color: "white", fontSize: 28}}>{this.state.dataSource[0][0].firstname[0].toUpperCase()}{this.state.dataSource[0][0].lastname[0].toUpperCase()}</Text>
                 </View>
                 <ScrollView>
-                    <TouchableOpacity onPress={() => onSignOut().then(() => navigation.navigate("SignedOut"))}>
+                    <TouchableOpacity onPress={() => onSignOut().then(() => {navigate("SignedOut"); console.log("signed out")})}>
                         <View style={styless.buttonClick}>
                             <Text style={styless.buttonText}>Se deconnecter</Text>
                         </View>
                     </TouchableOpacity>
                 </ScrollView>
-                {/*<Button
-                    backgroundColor="#03A9F4"
-                    title="Se déconnecter"
-                    onPress={() => onSignOut().then(() => navigation.navigate("SignedOut"))}
-                />*/}
             </Card>
         </View>)
     }
