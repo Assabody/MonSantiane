@@ -28,41 +28,48 @@ export class Insured extends React.Component {
             });
     }
     render() {
-        var {params} = this.props.navigation.state;
         if(this.state.isLoading){
             return(
                 <View style={styles.container}>
-                    <Text>Bonjour ! </Text>
+                    <Text>Loading...</Text>
                 </View>
             )
         }
+        bank = (bankowneriban, bankownerlastname, bankownerfirstname) => {
+            if (bankowneriban.length > 0 && bankownerfirstname.length > 0 && bankownerlastname.length > 0) {
+                return (
+                    <Row>
+                        <Col><Text>Facturation: {bankownerlastname} {bankownerfirstname}</Text><Text style={{fontWeight: 'bold'}}>IBAN: {bankowneriban}</Text></Col>
+                    </Row>
+                )
+            }
+        };
+        address = (addresslabel, zipcode, city, country) => {
+            if (addresslabel.length > 0 && zipcode.length > 0 && city.length > 0 && country.length > 0) {
+                return (
+                    <Row>
+                        <Col><Text>Adresse: {addresslabel} {zipcode} {city} {country}</Text></Col>
+                    </Row>
+                )
+            }
+        };
         return (
             <View style={styles.container} style={{flex: 1}}>
                 <ScrollView style={{margin: 0, padding: 0}}>
-                    { console.log(this.state.dataSource) }
                     {this.state.dataSource[0].map(({gender, firstname, lastname, regime, type, socialsecuritynumber, bankownerlastname, bankownerfirstname, bankowneraddress, bankownerzipcode, bankownercity, bankownercountry, bankowneriban, addresslabel, zipcode, city, country}) =>
                     <Card style={{flex: 1, padding: 0, margin: 0}}>
                         <Grid>
                             <Row>
                                 <Col><Text style={{fontWeight: 'bold'}}>{gender} {lastname.toUpperCase()} {firstname}</Text></Col>
                             </Row>
-                            if (adresslabel != null && addresslabel != "") {
-                                <Row>
-                                    <Col><Text>Adresse: {addresslabel} {zipcode} {city} {country}</Text></Col>
-                                </Row>
-                            }
-
+                            { address(addresslabel, zipcode, city, country) }
+                            { bank(bankowneriban, bankownerlastname, bankownerfirstname) }
                             <Row>
                                 <Col><Text style={{fontWeight: 'bold'}}>N° sécurité sociale: {socialsecuritynumber}</Text></Col>
                             </Row>
                             <Row>
                                 <Col><Text>{regime == null ? type : regime + " - " + type}</Text></Col>
                             </Row>
-                            <Row>
-                                <Col><Text style={{color: 'gray'}}>Base</Text></Col>
-                            </Row>
-
-                            {/*{ refundStatus(enumrefundcategory_id, amount , daterefund) }*/}
                         </Grid>
                     </Card>
                     )}
