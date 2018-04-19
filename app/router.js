@@ -45,6 +45,8 @@ export const SignedIn = TabNavigator(
         tabBarOptions: {
             style: {
                 margin: 0,
+                paddingBottom: 20
+                // height: Platform.OS === "android" ? 70 : 44
             }
         },
         tabBarComponent: TabBarBottom,
