@@ -59,5 +59,36 @@ export default StyleSheet.create(
             fontSize: 18,
             textAlign: 'center',
             padding: 4
-            }
+            },
+        TextLink:
+            {
+                color: '#F57E20',
+            },
+        FaqTitleStyle:
+            {
+                fontSize: 24,
+                textAlign: 'center',
+                color: '#000',
+                paddingBottom: 10,
+                marginTop: 10,
+            },
+        FaqTextStyle:
+            {
+                fontSize: 20,
+                paddingBottom: 3,
+                color: '#000',
+            },
+        FaqAdStyle:
+            {
+                fontSize: 20,
+                paddingBottom: 3,
+                color: '#000',
+                fontWeight: 'bold'
+            },
+        FaqButtonClick:
+            {
+                flex: 1,
+                backgroundColor: '#F57E20',
+                marginTop: 15,
+            },
     });
