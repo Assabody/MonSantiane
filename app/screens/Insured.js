@@ -28,11 +28,10 @@ export class Insured extends React.Component {
             });
     }
     render() {
-        var {params} = this.props.navigation.state;
         if(this.state.isLoading){
             return(
                 <View style={styles.container}>
-                    <Text>Bonjour ! </Text>
+                    <Text>Loading...</Text>
                 </View>
             )
         }
@@ -57,7 +56,6 @@ export class Insured extends React.Component {
         return (
             <View style={styles.container} style={{flex: 1}}>
                 <ScrollView style={{margin: 0, padding: 0}}>
-                    { console.log(this.state.dataSource) }
                     {this.state.dataSource[0].map(({gender, firstname, lastname, regime, type, socialsecuritynumber, bankownerlastname, bankownerfirstname, bankowneraddress, bankownerzipcode, bankownercity, bankownercountry, bankowneriban, addresslabel, zipcode, city, country}) =>
                     <Card style={{flex: 1, padding: 0, margin: 0}}>
                         <Grid>
@@ -65,7 +63,6 @@ export class Insured extends React.Component {
                                 <Col><Text style={{fontWeight: 'bold'}}>{gender} {lastname.toUpperCase()} {firstname}</Text></Col>
                             </Row>
                             { address(addresslabel, zipcode, city, country) }
-                            { console.log(bankowneriban === undefined ? "yes" : "no" + "'" + bankowneriban.length + "'") }
                             { bank(bankowneriban, bankownerlastname, bankownerfirstname) }
                             <Row>
                                 <Col><Text style={{fontWeight: 'bold'}}>N° sécurité sociale: {socialsecuritynumber}</Text></Col>
@@ -73,10 +70,6 @@ export class Insured extends React.Component {
                             <Row>
                                 <Col><Text>{regime == null ? type : regime + " - " + type}</Text></Col>
                             </Row>
-                            <Row>
-                                <Col><Text style={{color: 'gray'}}>Base</Text></Col>
-                            </Row>
-
                         </Grid>
                     </Card>
                     )}
