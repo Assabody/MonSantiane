@@ -1,8 +1,9 @@
 import React from "react";
-import {StyleSheet, View} from "react-native";
+import { StyleSheet, View, ScrollView, TouchableOpacity } from "react-native";
 import { Card, Button, Text } from "react-native-elements";
 import { onSignOut } from "../auth";
 import FAQButton from './FAQButton';
+import styless from "../style";
 
 export default  class Profile extends React.Component {
     constructor(props){
@@ -31,7 +32,8 @@ export default  class Profile extends React.Component {
     }
 
 render() {
-        if(this.state.isLoading){
+    const { navigate } = this.props.navigation;
+    if(this.state.isLoading){
             return(
                 <View style={styles.container}>
                     <Text>Loading...</Text>
@@ -57,11 +59,13 @@ render() {
                     { console.log(this.state.dataSource[0][0].firstname) }
                     <Text style={{color: "white", fontSize: 28}}>{this.state.dataSource[0][0].firstname[0].toUpperCase()}{this.state.dataSource[0][0].lastname[0].toUpperCase()}</Text>
                 </View>
-                <Button
-                    backgroundColor="#03A9F4"
-                    title="SIGN OUT"
-                    onPress={() => onSignOut().then(() => navigation.navigate("SignedOut"))}
-                />
+                <ScrollView>
+                    <TouchableOpacity onPress={() => onSignOut().then(() => {navigate("SignedOut"); console.log("signed out")})}>
+                        <View style={styless.buttonClick}>
+                            <Text style={styless.buttonText}>Se deconnecter</Text>
+                        </View>
+                    </TouchableOpacity>
+                </ScrollView>
             </Card>
         <FAQButton nav={this}/>
         </View>)

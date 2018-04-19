@@ -3,7 +3,7 @@ import { Platform, StatusBar } from "react-native";
 import {
     StackNavigator,
     TabNavigator,
-    SwitchNavigator
+    SwitchNavigator, TabBarBottom
 } from "react-navigation";
 import { FontAwesome } from "react-native-vector-icons";
 
@@ -49,9 +49,14 @@ export const SignedIn = TabNavigator(
     {
         tabBarOptions: {
             style: {
-                paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+                margin: 0,
+                height: Platform.OS === "android" ? 70 : 44
             }
-        }
+        },
+        tabBarComponent: TabBarBottom,
+        tabBarPosition: 'bottom',
+        animationEnabled: false,
+        swipeEnabled: false,
     }
 );
 
