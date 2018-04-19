@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Card } from 'react-native-elements';
 import styles from '../style';
 
 export class ActivationActivity extends Component
@@ -13,7 +14,7 @@ export class ActivationActivity extends Component
 
         return(
             <View>
-                <View>
+                <Card>
 
                     <Text style = { styles.FaqTitleStyle }>Retrouvez ici les questions concernant l'activation de votre espace</Text>
                     <ScrollView>
@@ -33,7 +34,7 @@ export class ActivationActivity extends Component
                             </View>
                         </TouchableOpacity>
                     </ScrollView>
-                </View>
+                </Card>
             </View>
         );
     }

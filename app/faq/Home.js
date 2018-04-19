@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Card } from 'react-native-elements';
 import styles from '../style';
 
 export class Home extends Component
@@ -11,7 +12,7 @@ export class Home extends Component
     {
         const { navigate } = this.props.navigation;
         return(
-            <View style={styles.container}>
+            <Card style={styles.container}>
                 <View>
                     <Text style = { styles.FaqTitleStyle }>Retrouvez ici les questions les plus fréquentes</Text>
                     <Text style = { styles.FaqTextStyle }>Consultez ici les questions les plus fréquentes sur l’utilisation de votre espace adhérent monsantiane.fr et accédez à notre formulaire de contact en cas de besoin.</Text>
@@ -33,7 +34,7 @@ export class Home extends Component
                         </View>
                     </TouchableOpacity>
                 </ScrollView>
-            </View>
+            </Card>
         );
     }
 }
