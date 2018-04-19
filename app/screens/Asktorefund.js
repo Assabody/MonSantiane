@@ -84,7 +84,7 @@ export class Asktorefund extends React.Component {
                                     <Col size={20}><Text style={styles.TextStyleRefunds}>Base</Text></Col>
                                     <Col size={20}><Text style={styles.TextStyleRefunds}>Taux</Text></Col>
                                     <Col size={20}><Text style={styles.TextStyleRefunds}>Montant</Text></Col>
-                                    <Col size={33}><Text style={{textAlign: 'right', fontSize:16}}>Remboursement</Text></Col>
+                                    <Col size={33}><Text style={{textAlign: 'right', fontSize:14}}>Remboursement</Text></Col>
                                 </Row>
                             {provision_list.map(({refund_id, refundamount, expense, ssrate, ssamount}) => {
                                 return (
