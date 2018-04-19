@@ -51,11 +51,13 @@ export default StyleSheet.create(
                 flex: 1,
                 backgroundColor: '#F57E20',
                 fontSize: 16,
+                paddingTop: 3,
+                paddingBottom: 3
             },
         buttonText: {
             color: '#ffffff',
             fontSize: 18,
             textAlign: 'center',
-            padding: 1
+            padding: 4
             }
     });
