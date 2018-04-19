@@ -26,7 +26,7 @@ export default class Upload extends React.Component {
         let { image } = this.state;
         return (
             <View style={styles.container}>
-                <Text>Salut salut</Text>
+                <Image source={require("../images/throbber_13.gif")}/>
                 <Button
                     title="Select Document"
                     onPress={this._pickDocument}

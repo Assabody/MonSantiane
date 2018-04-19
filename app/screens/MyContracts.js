@@ -19,7 +19,6 @@ export class MyContracts extends Component{
             .then((response) => response.json())
             .then((responseJson) => {
                 let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
-                console.log(data.id);
                 this.setState({
                     isLoading: false,
                     dataSource: [data],

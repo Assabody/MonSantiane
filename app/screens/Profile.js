@@ -12,13 +12,10 @@ export default  class Profile extends React.Component {
     }
     componentDidMount(){
         var {params} = this.props.navigation.state;
-        console.log("ss");
-        console.log(params);
         return fetch('https://api.santiane.fr/etna/mobilecamp/person?filter={"contract_id":"2570"}')
             .then((response) => response.json())
             .then((responseJson) => {
                 let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
-                console.log(data);
                 this.setState({
                     isLoading: false,
                     dataSource: [data],
@@ -56,7 +53,6 @@ render() {
                         marginBottom: 20
                     }}
                 >
-                    { console.log(this.state.dataSource[0][0].firstname) }
                     <Text style={{color: "white", fontSize: 28}}>{this.state.dataSource[0][0].firstname[0].toUpperCase()}{this.state.dataSource[0][0].lastname[0].toUpperCase()}</Text>
                 </View>
                 <ScrollView>

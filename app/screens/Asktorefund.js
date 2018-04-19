@@ -66,7 +66,7 @@ export class Asktorefund extends React.Component {
         if(this.state.isLoading){
             return(
                 <View style={styles.container}>
-                    <Text>Bonjour ! </Text>
+                    <Image source={require("../images/throbber_13.gif")}/>
                 </View>
             )
         }

@@ -11,8 +11,6 @@ export class Insured extends React.Component {
     }
     componentDidMount(){
         var {params} = this.props.navigation.state;
-        console.log("ss");
-        console.log(params);
         return fetch('https://api.santiane.fr/etna/mobilecamp/person?filter={"contract_id":"' + params.id + '"}')
             .then((response) => response.json())
             .then((responseJson) => {

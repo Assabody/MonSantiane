@@ -24,7 +24,6 @@ class HomeScreen extends React.Component {
         return fetch('https://api.santiane.fr/etna/mobilecamp/document?filter={"contract_id":2570}')
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")"))));
                 this.setState( {
                     isLoading: false,
                     dataSource: JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")"))),
@@ -56,7 +55,8 @@ class HomeScreen extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         if (this.state.isLoading) {
-            return <View><Text>Ca charge</Text></View>
+            return <View>
+                <Image source={require("../images/throbber_13.gif")}/></View>
         }
         else {
             if (this.state.arrayUri.length !== 0) {
@@ -98,9 +98,6 @@ class HomeScreen extends React.Component {
                                 </View>
                             </TouchableOpacity>
                         </ScrollView>
-                        {/*<Button title="Add Document" onPress={() => {
-                            navigate("Details", {returnData: this.returnData.bind(this), uriArray: this.state.arrayUri})
-                        }}/>*/}
                         <ScrollView>
                             {console.log(this.state.dataSource[0]) }
                         {this.state.dataSource.map(({id, label, link}) =>
