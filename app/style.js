@@ -12,7 +12,8 @@ export default StyleSheet.create(
         TextStyle:
             {
                 fontSize: 18,
-                textAlign: 'center',
+                paddingBottom: 3,
+                // textAlign: 'center',
                 color: '#000',
             },
 
@@ -34,6 +35,5 @@ export default StyleSheet.create(
             {
                 flex: 1,
                 backgroundColor: '#F57E20',
-                marginTop: 8
             }
     });
