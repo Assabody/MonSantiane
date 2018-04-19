@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, FlatList, Linking, Image } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, FlatList, Linking, Image, TouchableOpacity } from 'react-native';
+import { Card, Button} from "react-native-elements";
+import styless from '../style';
+
 import { StackNavigator } from 'react-navigation';
 import { Camera, Permissions } from 'expo';
 
@@ -24,8 +27,7 @@ class HomeScreen extends React.Component {
         return fetch('https://api.santiane.fr/etna/mobilecamp/document?filter={"contract_id":2570}')
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson);
-
+                console.log(JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")"))));
                 this.setState( {
                     isLoading: false,
                     dataSource: JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")"))),
@@ -76,16 +78,14 @@ class HomeScreen extends React.Component {
                             extraData={this.state}
                         />
                         <Button title="Envoyer" onPress={() => {this.resetData()}}/>
-                        <FlatList
-                            data={this.state.dataSource}
-                            renderItem={({item}) => <View>
-                                <Text>{item.id} : {item.label} et link : </Text>
+                        {this.state.dataSource.map((id, label, link) =>
+                            <Card key={id}>
+                                <Text style={{fontWeight: "bold"}}>label</Text>
                                 <Button onPress={() => {
-                                    this._handlePress(item.link)
-                                }} title="Document" style={{flex: 1}}/>
-                            </View>}
-                            keyExtractor={(item, index) => index.toString()}
-                        />
+                                    this._handlePress(link)
+                                }} title="Voir le document" style={{flex: 1}}/>
+                            </Card>
+                        )}
                     </View>
                 );
             }
@@ -96,16 +96,19 @@ class HomeScreen extends React.Component {
                         <Button title="Add Document" onPress={() => {
                             navigate("Details", {returnData: this.returnData.bind(this), uriArray: this.state.arrayUri})
                         }}/>
-                        <FlatList
-                            data={this.state.dataSource}
-                            renderItem={({item}) => <View>
-                                <Text>{item.id} : {item.label} et link : </Text>
-                                <Button onPress={() => {
-                                    this._handlePress(item.link)
-                                }} title="Document" style={{flex: 1}}/>
-                            </View>}
-                            keyExtractor={(item, index) => index.toString()}
-                        />
+                        <ScrollView>
+                            {console.log(this.state.dataSource[0]) }
+                        {this.state.dataSource.map(({id, label, link}) =>
+                                <Card key={id}>
+                                    <Text style={{fontWeight: "bold", textAlign: 'center'}}>{label}</Text>
+                                    <TouchableOpacity onPress={() => this._handlePress(link)}>
+                                        <View style={styless.buttonClick}>
+                                            <Text style={styless.buttonText}>voir le document</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </Card>
+                        )}
+                        </ScrollView>
                     </View>
                 )
         }
