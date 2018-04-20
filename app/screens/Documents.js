@@ -167,13 +167,15 @@ class DetailsScreen extends React.Component {
             return <Text>No access to camera</Text>;
         } else {
             return (
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 1}}>
                     <Camera style={{ flex: 1 }} type={this.state.type} ref={ref => {this.camera = ref}}>
-                        <TouchableOpacity onPress={() => () => {let res = this.takePicture()}}>
+                        <ScrollView>
+                        <TouchableOpacity onPress={() => {this.takePicture()}}>
                             <View style={styless.buttonClick}>
-                                <Text style={styless.buttonText}>CAPTURE</Text>
+                                <Text style={styless.buttonText}>Capture</Text>
                             </View>
                         </TouchableOpacity>
+                        </ScrollView>
                     </Camera>
                 </View>
             );
