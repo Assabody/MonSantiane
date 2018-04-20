@@ -61,13 +61,15 @@ class HomeScreen extends React.Component {
         else {
             if (this.state.arrayUri.length !== 0) {
                 return (
-                    <View style={styles.container}>
+                    <View style={{flex:1}}>
+                        <ScrollView>
                         <Text> Ajouter un document</Text>
                         <TouchableOpacity onPress={() => navigate("Details", {returnData: this.returnData.bind(this), uriArray: this.state.arrayUri})}>
                             <View style={styless.buttonClick}>
                                 <Text style={styless.buttonText}>Ajouter un document</Text>
                             </View>
                         </TouchableOpacity>
+                        </ScrollView>
                         <FlatList
                             data={this.state.arrayUri}
                             horizontal
@@ -75,15 +77,27 @@ class HomeScreen extends React.Component {
                             keyExtractor={(item, index) => index.toString()}
                             extraData={this.state}
                         />
-                        <Button title="Envoyer" onPress={() => {this.resetData()}}/>
-                        {this.state.dataSource.map((id, label, link) =>
-                            <Card key={id}>
-                                <Text style={{fontWeight: "bold"}}>label</Text>
-                                <Button onPress={() => {
-                                    this._handlePress(link)
-                                }} title="Voir le document" style={{flex: 1}}/>
-                            </Card>
-                        )}
+                        <ScrollView>
+                        <TouchableOpacity onPress={() => { this.resetData() } }>
+                            <View style={styless.buttonClick}>
+                                <Text style={styless.buttonText}>Envoyer</Text>
+                            </View>
+                        </TouchableOpacity>
+                        </ScrollView>
+                        <ScrollView>
+                            {console.log(this.state.dataSource[0]) }
+                            {this.state.dataSource.map(({id, label, link}) =>
+                                <Card key={id}>
+                                    <Text style={{fontWeight: "bold", textAlign: 'center'}}>{label}</Text>
+                                    <TouchableOpacity onPress={() => this._handlePress(link)}>
+                                        <View style={styless.buttonClick}>
+                                            <Text style={styless.buttonText}>voir le document</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </Card>
+                            )}
+                            <Text></Text>
+                        </ScrollView>
                         <FAQButton nav={this}/>
                     </View>
                 );
@@ -155,7 +169,11 @@ class DetailsScreen extends React.Component {
             return (
                 <View style={{ flex: 1 }}>
                     <Camera style={{ flex: 1 }} type={this.state.type} ref={ref => {this.camera = ref}}>
-                        <Button style={styles.capture} title="Capture" onPress={() => {let res = this.takePicture()}}/>
+                        <TouchableOpacity onPress={() => () => {let res = this.takePicture()}}>
+                            <View style={styless.buttonClick}>
+                                <Text style={styless.buttonText}>CAPTURE</Text>
+                            </View>
+                        </TouchableOpacity>
                     </Camera>
                 </View>
             );

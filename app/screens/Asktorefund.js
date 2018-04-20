@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ScrollView, Text, View, StyleSheet, FlatList} from "react-native";
+import {ScrollView, Text, View, StyleSheet, FlatList, Image} from "react-native";
 import { Card } from "react-native-elements";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import styles from '../style';
