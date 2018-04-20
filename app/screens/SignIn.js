@@ -6,7 +6,7 @@ import FAQButton from "./FAQButton";
 import {isSignedIn, onSignIn, onSignOut} from "../auth";
 import styless from "../style";
 
-export default class Signin extends React.Component {
+class Signin extends React.Component {
     constructor() {
         super();
 
@@ -68,3 +68,5 @@ export default class Signin extends React.Component {
         )
     }
 }
+
+export default Signin;

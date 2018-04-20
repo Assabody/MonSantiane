@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ScrollView, Text, View, StyleSheet, TouchableOpacity, Image} from "react-native";
+import {ScrollView, Text, View, StyleSheet, TouchableOpacity, Image, AsyncStorage} from "react-native";
 import { Card, Button } from "react-native-elements";
 import styles from '../style';
 import FAQButton from './FAQButton';
@@ -15,6 +15,28 @@ export class MyContracts extends Component{
     };
 
     componentDidMount(){
+        AsyncStorage.getItem('email')
+            .then(res => {
+                if (res !== null && res !== "") {
+                    AsyncStorage.getItem('password')
+                        .then(res => {
+                            if (res !== null && res !== "") {
+                                return true;
+                            } else {
+                                this.props.navigation.replace('Signin');
+                                return false;
+                            }
+                        })
+                        .catch(err => reject(err));
+                    return true;
+                }
+                else {
+                    this.props.navigation.replace('Signin');
+                    return false;
+                }
+            })
+            .catch(err => console.log("error Catch"));
+
         return fetch('https://api.santiane.fr/etna/mobilecamp/contract?filter={"limit":10}')
             .then((response) => response.json())
             .then((responseJson) => {

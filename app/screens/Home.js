@@ -7,6 +7,7 @@ import { FaqNavigator } from './../../faq';
 import { Asktorefund } from './Asktorefund';
 import { Documents } from './Documents';
 import { Insured } from './Insured';
+import Signin from './SignIn';
 
 const stackNav = StackNavigator(
     {
@@ -38,6 +39,12 @@ const stackNav = StackNavigator(
             screen: Insured,
             navigationOptions:({}) => ({
                 title: "Bénéficiaires",
+            })
+        },
+        Signin: {
+            screen: Signin,
+            navigationOptions: ({}) => ({
+                title: "Connexion"
             })
         }
     },
