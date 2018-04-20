@@ -8,7 +8,7 @@ export default class FAQButton extends Component {
     }
 
     render() {
-        return <View style={{position:'absolute',bottom:10, right:10, alignSelf:'flex-end'}}>
+        return <View style={{ position:'absolute',bottom: 10, right:10, alignSelf:'flex-end'}}>
                 <TouchableOpacity onPress={() => this.props.nav.props.navigation.navigate("FAQ")}>
                     <View style={{borderRadius:300, flex: 1,
                         backgroundColor: '#F57E20',

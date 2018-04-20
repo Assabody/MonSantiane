@@ -39,30 +39,32 @@ render() {
         }
         let name = this.state.dataSource[0][0].firstname + " " + this.state.dataSource[0][0].lastname;
 
-    return (<View style={{paddingVertical: 20}}>
-            <Card title={name}>
-                <View
-                    style={{
-                        backgroundColor: "#bcbec1",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: 80,
-                        height: 80,
-                        borderRadius: 40,
-                        alignSelf: "center",
-                        marginBottom: 20
-                    }}
-                >
-                    <Text style={{color: "white", fontSize: 28}}>{this.state.dataSource[0][0].firstname[0].toUpperCase()}{this.state.dataSource[0][0].lastname[0].toUpperCase()}</Text>
-                </View>
-                <ScrollView>
-                    <TouchableOpacity onPress={() => onSignOut().then(() => {navigate("SignedOut"); console.log("signed out")})}>
-                        <View style={styless.buttonClick}>
-                            <Text style={styless.buttonText}>Se deconnecter</Text>
-                        </View>
-                    </TouchableOpacity>
-                </ScrollView>
-            </Card>
+    return (<View style={{flex:1}}>
+            <View style={{marginTop:25}}>
+                <Card title={name}>
+                    <View
+                        style={{
+                            backgroundColor: "#bcbec1",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: 80,
+                            height: 80,
+                            borderRadius: 40,
+                            alignSelf: "center",
+                            marginBottom: 20
+                        }}
+                    >
+                        <Text style={{color: "white", fontSize: 28}}>{this.state.dataSource[0][0].firstname[0].toUpperCase()}{this.state.dataSource[0][0].lastname[0].toUpperCase()}</Text>
+                    </View>
+                    <ScrollView>
+                        <TouchableOpacity onPress={() => onSignOut().then(() => {navigate("SignedOut"); console.log("signed out")})}>
+                            <View style={styless.buttonClick}>
+                                <Text style={styless.buttonText}>Se deconnecter</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </ScrollView>
+                </Card>
+            </View>
         <FAQButton nav={this}/>
         </View>)
     }
