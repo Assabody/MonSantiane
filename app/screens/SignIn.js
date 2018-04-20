@@ -27,7 +27,7 @@ export default class Signin extends React.Component {
                 <View style={{flex:1}}>
                     <Image style={{width:250, height:250}} source={require("../images/logo-santiane.png")}/>
                 </View>
-                <View style={{flex:3, marginBottom:60, marginTop:35}}>
+                <View style={{flex:3, marginBottom:60, marginTop:55}}>
                     <Card>
                         <FormLabel>Email</FormLabel>
                         <FormInput autoCapitalize='none' placeholder="Email address..." onChangeText={(val) => this.setState({email: val})}/>

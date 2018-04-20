@@ -5,7 +5,6 @@ import styless from '../style';
 
 import { StackNavigator } from 'react-navigation';
 import { Camera, Permissions } from 'expo';
-import FAQButton from './FAQButton';
 
 export class Documents extends React.Component {
     render() {
@@ -61,7 +60,7 @@ class HomeScreen extends React.Component {
         else {
             if (this.state.arrayUri.length !== 0) {
                 return (
-                    <View style={{flex:1}}>
+                    <View style={{flex:1, marginBottom:150}}>
                         <ScrollView>
                         <Text> Ajouter un document</Text>
                         <TouchableOpacity onPress={() => navigate("Details", {returnData: this.returnData.bind(this), uriArray: this.state.arrayUri})}>
@@ -98,7 +97,6 @@ class HomeScreen extends React.Component {
                             )}
                             <Text></Text>
                         </ScrollView>
-                        <FAQButton nav={this}/>
                     </View>
                 );
             }
@@ -126,7 +124,6 @@ class HomeScreen extends React.Component {
                         )}
                         <Text></Text>
                         </ScrollView>
-                        <FAQButton nav={this}/>
                     </View>
                 )
         }

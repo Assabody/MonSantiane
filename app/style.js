@@ -56,7 +56,7 @@ export default StyleSheet.create(
             },
         buttonText: {
             color: '#ffffff',
-            fontSize: 18,
+            fontSize: 16,
             textAlign: 'center',
             padding: 4
             },
