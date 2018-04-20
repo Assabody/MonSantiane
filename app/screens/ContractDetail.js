@@ -4,6 +4,7 @@ import { Card, Button } from "react-native-elements";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import styles from '../style';
 import FAQButton from "./FAQButton";
+import Moment from 'moment';
 
 export class ContractDetail extends Component{
     constructor(props){
@@ -25,6 +26,10 @@ export class ContractDetail extends Component{
                 if (data.debittype === "prel_mensuel") {
                     data.debittypeAff = "Prélèvement mensuel";
                 }
+
+                Moment.locale('fr');
+                data.dateeffective = Moment(data.dateeffective).format("DD/MM/YYYY");
+                data.dateending = Moment(data.dateending).format("DD/MM/YYYY");
 
                 this.setState({
                     isLoading: false,

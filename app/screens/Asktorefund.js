@@ -4,6 +4,7 @@ import { Card } from "react-native-elements";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import styles from '../style';
 import FAQButton from './FAQButton';
+import Moment from 'moment';
 
 
 export class Asktorefund extends React.Component {
@@ -17,6 +18,9 @@ export class Asktorefund extends React.Component {
             .then((response) => response.json())
             .then((responseJson) => {
                 let data = JSON.parse(JSON.stringify(eval("(" +responseJson.value+ ")")));
+                for (let contract of data) {
+                    contract.daterefund = Moment(contract.dateending).format("DD/MM/YYYY");
+                }
                 this.setState({
                     isLoading: false,
                     dataSource: [data],
